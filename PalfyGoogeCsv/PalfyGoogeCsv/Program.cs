@@ -13,73 +13,54 @@ namespace ConsoleApplication17
         {
 
             StreamWriter sw = new StreamWriter("users.csv", false, Encoding.UTF8);
-            string[] a_nevek = File.ReadAllLines("9a.txt");
-            string[] b_nevek = File.ReadAllLines("9b.txt");
-            string[] c_nevek = File.ReadAllLines("9c.txt");
-            string[] e_nevek = File.ReadAllLines("9e.txt");
-            string[] f_nevek = File.ReadAllLines("9f.txt");
-            string a_osztaly = "a19";
-            string b_osztaly = "b19";
-            string c_osztaly = "c19";
-            string e_osztaly = "e19";
-            string f_osztaly = "f19";
+            string[] nevsor = File.ReadAllLines("nevsor.txt");
             string[] elsosor = File.ReadAllLines("elsosor.txt");
             string szervezeti_egyseg;
             Console.WriteLine("Add meg a szervezeti egység teljes elérési útját (kezdés évig):");
             szervezeti_egyseg = Console.ReadLine();
             Console.Clear();
-            string tmp;
+            int counter = 0;
+            string tmp="";
             string[] temp;
-
-
+            string osztaly = "";
             sw.WriteLine(elsosor[0]);
-            //9a----------------------------------------------------------------------------------------------------------------------------------------------
-            for (int i = 0; i < a_nevek.Length; i++)
+            for (int i = 0; i < nevsor.Length; i++)
             {
-                tmp = a_nevek[i];
-
-                sw.Write(nevgyar(tmp) + "," + a_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + a_osztaly + ",,,,,,,,,,,,,,,,,,True,");
-                sw.WriteLine();
-
-            }
-            //9b----------------------------------------------------------------------------------------------------------------------------------------------
-            for (int i = 0; i < b_nevek.Length; i++)
-            {
-                tmp = b_nevek[i];
-
-                sw.Write(nevgyar(tmp) + "," + b_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + " / " + b_osztaly + ",,,,,,,,,,,,,,,,,,True,");
-                sw.WriteLine();
-
-            }
-            //9c----------------------------------------------------------------------------------------------------------------------------------------------
-            for (int i = 0; i < c_nevek.Length; i++)
-            {
-                tmp = c_nevek[i];
-
-                sw.Write(nevgyar(tmp) + "," + c_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + c_osztaly + ",,,,,,,,,,,,,,,,,,True,");
-                sw.WriteLine();
-
-            }
-            //9e----------------------------------------------------------------------------------------------------------------------------------------------
-            for (int i = 0; i < e_nevek.Length; i++)
-            {
-                tmp = e_nevek[i];
-
-                sw.Write(nevgyar(tmp) + "," + e_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + e_osztaly + ",,,,,,,,,,,,,,,,,,True,");
-                sw.WriteLine();
-
-            }
-            //9f----------------------------------------------------------------------------------------------------------------------------------------------
-            for (int i = 0; i < f_nevek.Length; i++)
-            {
-                tmp = f_nevek[i];
-
-                sw.Write(nevgyar(tmp) + "," + f_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + f_osztaly + ",,,,,,,,,,,,,,,,,,True,");
-                sw.WriteLine();
-
+                tmp = nevsor[i];
+                switch (nevsor[i])
+                {
+                    case "a19":
+                        osztaly = "a19";
+                        counter = counter - 1;
+                        break;
+                    case "b19":
+                        osztaly = "b19";
+                        counter = counter - 1;
+                        break;
+                    case "c19":
+                        osztaly = "c19";
+                        counter = counter - 1;
+                        break;
+                    case "e19":
+                        osztaly = "e19";
+                        counter = counter - 1;
+                        break;
+                    case "f19":
+                        osztaly = "f19";
+                        counter = counter - 1;
+                        break;
+                    default:
+                        sw.Write(nevgyar(tmp) + "," + osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                        sw.WriteLine();
+                        break;
+                        
+                }
+               
+                counter++;
             }
             sw.Close();
-            Console.WriteLine((a_nevek.Length+b_nevek.Length+c_nevek.Length+e_nevek.Length+f_nevek.Length) + " darab felhasználó sikeresen létrehozva!");
+            
+            Console.WriteLine(counter + " darab felhasználó sikeresen létrehozva!");
             Console.ReadLine();
         }
         static string nevgyar(string nev)
