@@ -24,6 +24,10 @@ namespace ConsoleApplication17
             string e_osztaly = "e19";
             string f_osztaly = "f19";
             string[] elsosor = File.ReadAllLines("elsosor.txt");
+            string szervezeti_egyseg;
+            Console.WriteLine("Add meg a szervezeti egység teljes elérési útját (kezdés évig):");
+            szervezeti_egyseg = Console.ReadLine();
+            Console.Clear();
             string tmp;
             string[] temp;
 
@@ -34,7 +38,7 @@ namespace ConsoleApplication17
             {
                 tmp = a_nevek[i];
 
-                sw.Write(nevgyar(tmp) + "," + a_osztaly + "." + emailgyar(tmp) + "," + "12345678,,/Homokozo/2019/" + a_osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                sw.Write(nevgyar(tmp) + "," + a_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + a_osztaly + ",,,,,,,,,,,,,,,,,,True,");
                 sw.WriteLine();
 
             }
@@ -43,7 +47,7 @@ namespace ConsoleApplication17
             {
                 tmp = b_nevek[i];
 
-                sw.Write(nevgyar(tmp) + "," + b_osztaly + "." + emailgyar(tmp) + "," + "12345678,,/Homokozo/2019/" + b_osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                sw.Write(nevgyar(tmp) + "," + b_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + " / " + b_osztaly + ",,,,,,,,,,,,,,,,,,True,");
                 sw.WriteLine();
 
             }
@@ -52,7 +56,7 @@ namespace ConsoleApplication17
             {
                 tmp = c_nevek[i];
 
-                sw.Write(nevgyar(tmp) + "," + c_osztaly + "." + emailgyar(tmp) + "," + "12345678,,/Homokozo/2019/" + c_osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                sw.Write(nevgyar(tmp) + "," + c_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + c_osztaly + ",,,,,,,,,,,,,,,,,,True,");
                 sw.WriteLine();
 
             }
@@ -61,7 +65,7 @@ namespace ConsoleApplication17
             {
                 tmp = e_nevek[i];
 
-                sw.Write(nevgyar(tmp) + "," + e_osztaly + "." + emailgyar(tmp) + "," + "12345678,,/Homokozo/2019/" + e_osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                sw.Write(nevgyar(tmp) + "," + e_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + e_osztaly + ",,,,,,,,,,,,,,,,,,True,");
                 sw.WriteLine();
 
             }
@@ -70,12 +74,12 @@ namespace ConsoleApplication17
             {
                 tmp = f_nevek[i];
 
-                sw.Write(nevgyar(tmp) + "," + f_osztaly + "." + emailgyar(tmp) + "," + "12345678,,/Homokozo/2019/" + f_osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                sw.Write(nevgyar(tmp) + "," + f_osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + f_osztaly + ",,,,,,,,,,,,,,,,,,True,");
                 sw.WriteLine();
 
             }
             sw.Close();
-            Console.WriteLine("GG");
+            Console.WriteLine((a_nevek.Length+b_nevek.Length+c_nevek.Length+e_nevek.Length+f_nevek.Length) + " darab felhasználó sikeresen létrehozva!");
             Console.ReadLine();
         }
         static string nevgyar(string nev)
