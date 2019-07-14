@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace ConsoleApplication17
 {
@@ -18,6 +19,8 @@ namespace ConsoleApplication17
             string szervezeti_egyseg;
             Console.WriteLine("Add meg a szervezeti egység teljes elérési útját (kezdés évig):");
             szervezeti_egyseg = Console.ReadLine();
+            Console.Write("Add meg az alapértelmezett jelszót: ");
+            string jelszo = Console.ReadLine();
             Console.Clear();
             int counter = 0;
             string tmp="";
@@ -50,7 +53,7 @@ namespace ConsoleApplication17
                         counter = counter - 1;
                         break;
                     default:
-                        sw.Write(nevgyar(tmp) + "," + osztaly + "." + emailgyar(tmp) + "," + "12345678,," + szervezeti_egyseg + "/" + osztaly + ",,,,,,,,,,,,,,,,,,True,");
+                        sw.Write(nevgyar(tmp) + "," + osztaly + "." + emailgyar(tmp) + "," + jelszo + ",," + szervezeti_egyseg + "/" + osztaly + ",,,,,,,,,,,,,,,,,,True,");
                         sw.WriteLine();
                         break;
                         
@@ -59,7 +62,19 @@ namespace ConsoleApplication17
                 counter++;
             }
             sw.Close();
-            
+            for (int i = 1; i < 11; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write("█");
+                }
+                Console.WriteLine(" " + i * 10 + "%");
+                Thread.Sleep(250);
+                if (i != 10)
+                {
+                    Console.Clear();
+                }
+            }
             Console.WriteLine(counter + " darab felhasználó sikeresen létrehozva!");
             Console.ReadLine();
         }
